@@ -47,11 +47,14 @@
 </div>
 
 
-<div *ngFor="let usuario of usuarios; let posicion = index">
-  <h4>{{usuario.nombre}} Tiene la posicion: {{posicion}}</h4>
-  <p>{{usuario.correo}}</p>
-  <p>{{usuario.password}}</p>
-
-  <button (click)="editarUsuario(posicion)" >Editar</button>
-
+<div class="container borde">
+  <div *ngFor="let usuario of usuarios; let posicion = index">
+    <h4>{{usuario.nombre}} Tiene la posicion: {{posicion}}</h4>
+    <p>{{usuario.correo}}</p>
+    <p>{{usuario.password}}</p>
+  
+    <button (click)="editarUsuario(posicion)" >Editar</button>
+    <button (click)="eliminarUsuario(posicion)" >Eliminar</button>
+  
+  </div>
 </div>

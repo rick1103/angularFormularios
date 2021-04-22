@@ -68,4 +68,9 @@ export class AgregarComponent implements OnInit {
     this.posicionEditar = posicion;
   }
 
+  eliminarUsuario(posicion: number)
+  {
+    this.usuarios.splice(posicion,1);
+  }
+
 }
