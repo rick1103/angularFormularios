@@ -17,6 +17,7 @@ export class AgregarComponent implements OnInit {
   formularioCreado: FormGroup;
   esNuevo: boolean = true;
   usuarios: Array<Usuario> = new Array<Usuario>();
+  posicionEditar: number = -1;
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -43,6 +44,17 @@ export class AgregarComponent implements OnInit {
     this.formularioCreado.reset()
   }
 
+  editar()
+  {
+    this.usuarios[this.posicionEditar].nombre = this.formularioCreado.value.nombre;
+    this.usuarios[this.posicionEditar].correo = this.formularioCreado.value.correo;
+    this.usuarios[this.posicionEditar].password = this.formularioCreado.value.password;
+    this.formularioCreado.reset();
+    this.esNuevo = true;
+    this.posicionEditar = -1;
+
+  }
+
   editarUsuario(posicion: number)
   {
 
@@ -53,6 +65,7 @@ export class AgregarComponent implements OnInit {
     })
 
     this.esNuevo = false;
+    this.posicionEditar = posicion;
   }
 
 }
