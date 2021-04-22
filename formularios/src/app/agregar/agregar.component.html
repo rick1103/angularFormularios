@@ -40,12 +40,18 @@
       
     </div>
 
-    <button [disabled]="!formularioCreado.valid" class="btn btn-primary" (click)="agregar()">Agregar</button>
+    <button *ngIf="esNuevo" [disabled]="!formularioCreado.valid" class="btn btn-primary" (click)="agregar()">Agregar</button>
+    <button *ngIf="!esNuevo" [disabled]="!formularioCreado.valid" class="btn btn-danger" (click)="editar()">Editar</button>
   </form>
 
-  <div *ngFor="let usuario of usuarios">
-    <h4>{{usuario.nombre}}</h4>
-    <p>{{usuario.correo}}</p>
-    <p>{{usuario.password}}</p>
-  </div>
+</div>
+
+
+<div *ngFor="let usuario of usuarios; let posicion = index">
+  <h4>{{usuario.nombre}} Tiene la posicion: {{posicion}}</h4>
+  <p>{{usuario.correo}}</p>
+  <p>{{usuario.password}}</p>
+
+  <button (click)="editarUsuario(posicion)" >Editar</button>
+
 </div>
